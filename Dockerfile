@@ -1,6 +1,7 @@
 
 ### STAGE 1: Build ###
-FROM openjdk:11-jdk AS build
+#FROM openjdk:11-jdk AS build
+FROM registry.redhat.io/openjdk/openjdk-11-rhel7:latest  AS build
 
 ENV KAFKA_MANAGER_SOURCE=3.0.0.4
 ENV KAFKA_MANAGER_VERSION=3.0.0.4
@@ -18,7 +19,8 @@ ADD robust_build.sh /
 RUN chmod +x robust_build.sh && /robust_build.sh
 
 ### STAGE 2: Package ###
-FROM openjdk:11-jre
+#FROM openjdk:11-jre
+FROM registry.redhat.io/openjdk/openjdk-11-rhel7:latest
 MAINTAINER Hleb Albau <hleb.albau@gmail.com>
 
 ###RUN apk update && apk add bash
